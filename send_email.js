@@ -22,7 +22,7 @@ const mailgun = new Mailgun(formData);
 const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY });
 
 // Failure counter
-let failureCount = 0;
+let failureCount = 0; 
 const MAX_FAILURES = 3;
 
 console.log('invoked outside');
