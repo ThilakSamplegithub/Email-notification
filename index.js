@@ -1,6 +1,6 @@
 const express=require('express')
 const app=express()
-const {router}=require("./send_email.js")
+const {router}=require("./controllers.js")
 // console.log(router)
 app.use(express.json())
 require('dotenv').config()

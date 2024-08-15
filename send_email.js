@@ -1,8 +1,7 @@
 const nodemailer = require('nodemailer');
-const { Router } = require('express');
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
-const router = Router();
+// const router = Router();
 require('dotenv').config();
 console.log(process.env.PASSWORD,'is password i commneted')
 // Nodemailer transporter
@@ -27,7 +26,7 @@ const MAX_FAILURES = 3;
 
 console.log('invoked outside');
 
-router.post(`/sendEmail`, async (req, res) => {
+const nodemailerFunction= async (req, res) => {
     console.log('invoke me');
     const { recipientEmail } = req.query;
     console.log(recipientEmail, 'is the email I want to send');
@@ -69,7 +68,7 @@ router.post(`/sendEmail`, async (req, res) => {
     } catch (err) {
         res.status(400).send({ err: err.message });
     }
-});
+};
 
 // Function to send email using Mailgun
 async function sendViaMailgun(recipientEmail) {
@@ -82,4 +81,4 @@ async function sendViaMailgun(recipientEmail) {
     });
 }
 
-module.exports = { router };
+module.exports = { nodemailerFunction };
