@@ -61,14 +61,46 @@ According to "Head First Design Patterns," the Strategy Pattern is a design patt
 - **Polymorphism:**  
   The Strategy Pattern leverages polymorphism from Object-Oriented Programming (OOP) concepts, where different algorithms (or strategies) can be used interchangeably within the same interface.
 
-## primary email service provider as Nodemailer and secondary email service provider as Mailgun:
-Choosed Nodemailer as primary email service provider as we can send emails  to any gmail account we want without need to need for acknowledgement to send mail from recipients like Mailgun is needed.
-The primary email service provider (Nodemailer) will fail three times before switching to the secondary provider (Mailgun).
-The environment variables for email configurations (such as EMAIL, PASSWORD, MAILGUN_API_KEY, and DOMAIN_NAME) are correctly set in the .env file.
-The recipient's email address is valid and correctly passed as a query parameter.
-Hypotheses:
-The ability to switch email providers dynamically will ensure higher reliability in email delivery, especially in case of issues with one provider.
-Using the MVC and Strategy patterns will result in a more maintainable and scalable codebase that can easily accommodate future enhancements or changes.
+### Email Providers Setup
+
+#### Primary and Secondary Email Providers
+
+- **Primary Email Provider: Nodemailer**
+  - **Reason for Choosing:**
+    - Nodemailer allows sending emails to any Gmail account without requiring additional acknowledgements from recipients. 
+    - It is chosen as the primary provider to handle email delivery straightforwardly.
+
+- **Secondary Email Provider: Mailgun**
+  - **Reason for Choosing:**
+    - Mailgun is used as a fallback provider if Nodemailer fails to send an email after three attempts.
+    - It requires additional setup, such as acknowledgement from the recipient, which is not needed for Nodemailer.
+
+#### Configuration
+
+- **Environment Variables:**
+  - Email configurations for both providers are managed using environment variables, which are set in the `.env` file.
+  - Variables include:
+    - `EMAIL` (for Nodemailer)
+    - `PASSWORD` (for Nodemailer)
+    - `MAILGUN_API_KEY` (for Mailgun)
+    - `DOMAIN_NAME` (for Mailgun)
+
+- **Recipient's Email:**
+  - The recipient's email address is validated and passed as a query parameter in the request.
+
+#### Hypotheses
+
+- **Dynamic Provider Switching:**
+  - The ability to switch between email providers dynamically is expected to enhance reliability in email delivery, particularly if issues arise with the primary provider.
+
+- **Design Patterns Used:**
+  - **MVC Pattern:**
+    - Helps in separating concerns, making the codebase more maintainable and scalable.
+  - **Strategy Pattern:**
+    - Provides flexibility to accommodate future changes or enhancements in email delivery methods without affecting the existing codebase.
+
+By using Nodemailer as the primary provider and Mailgun as a secondary fallback, the system aims to ensure consistent email delivery while maintaining a clean, scalable, and adaptable code structure.
+.
 
 ## usecases :
 The need to switch email providers after repeated failures is applicable in scenarios where reliable email delivery is crucial, such as job application acknowledgments after we have applied
