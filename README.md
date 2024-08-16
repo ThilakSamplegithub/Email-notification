@@ -23,13 +23,14 @@ Note: placed this crucial information in .env file as part of best practices but
    git clone https://github.com/yourusername/email-service.git
 2.Run npm i to install all dependencies.
 ## Why Strategy Pattern?
-After recommendation of chatgpt, strategy pattern is choosen.Did research about this pattern in youtube tutorial by Christopher as well as downloading book name Headfirst strategy patterns.
+After recommendation of chatgpt, strategy pattern is choosen.Did research about this pattern in youtube tutorial by Christopher as well as downloading book name Headfirst design patterns.
+Strategy pattern defined as per book Headfirst design patterns is family of algorithms encapsulated each algorithm which are interchangeable without need to change client when algorithm changes.
 The Strategy Pattern was chosen for its flexibility and scalability.Code wont break whether 200 members request to server or 2 million users but still load also depends on infrastructure like
 cpu,ram etc... we have bought from Cloud services as rent.
 It allows for easily adding new email providers in the future without modifying existing code.Adding new features to existing code is nothing but extensibility.
 The logic for selecting and switching providers is decoupled from the actual email-sending logic, promoting maintainability.And we know maintainability is able to read code and fix bugs without
 spending much time.
- 
+We can observe polymorphism from oops concept being used in this pattern clearly.
 ## primary email service provider as Nodemailer and secondary email service provider as Mailgun:
 Choosed Nodemailer as primary email service provider as we can send emails  to any gmail account we want without need to need for acknowledgement to send mail from recipients like Mailgun is needed.
 The primary email service provider (Nodemailer) will fail three times before switching to the secondary provider (Mailgun).
