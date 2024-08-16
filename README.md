@@ -41,15 +41,26 @@ Note: placed this crucial information in .env file as part of best practices but
    ```bash
    git clone https://github.com/yourusername/email-service.git
 2.Run npm i to install all dependencies.
-## Why Strategy Pattern?
-After recommendation of chatgpt, strategy pattern is choosen.Did research about this pattern in youtube tutorial by Christopher as well as downloading book name Headfirst design patterns.
-Strategy pattern defined as per book Headfirst design patterns is family of algorithms encapsulated each algorithm which are interchangeable without need to change client when algorithm changes.
-The Strategy Pattern was chosen for its flexibility and scalability.Code wont break whether 200 members request to server or 2 million users but still load also depends on infrastructure like
-cpu,ram etc... we have bought from Cloud services as rent.
-It allows for easily adding new email providers in the future without modifying existing code.Adding new features to existing code is nothing but extensibility.
-The logic for selecting and switching providers is decoupled from the actual email-sending logic, promoting maintainability.And we know maintainability is able to read code and fix bugs without
-spending much time.
-We can observe polymorphism from oops concept being used in this pattern clearly.After all Learning about Low level design is part of plan in upcoming 2 years.
+### Why Strategy Pattern?
+
+The Strategy Pattern was chosen based on the recommendation from ChatGPT, and further research was conducted through a YouTube tutorial by Christopher and the book "Head First Design Patterns."
+
+#### Definition:
+According to "Head First Design Patterns," the Strategy Pattern is a design pattern that defines a family of algorithms, encapsulates each algorithm, and makes them interchangeable. This pattern allows for the client to change the algorithm without modifying the client code.
+
+#### Reasons for Choosing the Strategy Pattern:
+- **Flexibility and Scalability:**  
+  The Strategy Pattern provides the flexibility to handle varying loads, whether there are 200 or 2 million users requesting the server. While performance also depends on the infrastructure (e.g., CPU, RAM) rented from cloud services, the Strategy Pattern ensures that the code remains robust under different conditions.
+
+- **Extensibility:**  
+  One of the key benefits of the Strategy Pattern is that it allows for the easy addition of new email providers in the future without modifying existing code. This extensibility ensures that the application can grow and adapt to new requirements over time.
+
+- **Maintainability:**  
+  The logic for selecting and switching email providers is decoupled from the actual email-sending logic, which promotes maintainability. Maintainable code is easier to read, debug, and update, allowing developers to fix bugs and add features efficiently.
+
+- **Polymorphism:**  
+  The Strategy Pattern leverages polymorphism from Object-Oriented Programming (OOP) concepts, where different algorithms (or strategies) can be used interchangeably within the same interface.
+
 ## primary email service provider as Nodemailer and secondary email service provider as Mailgun:
 Choosed Nodemailer as primary email service provider as we can send emails  to any gmail account we want without need to need for acknowledgement to send mail from recipients like Mailgun is needed.
 The primary email service provider (Nodemailer) will fail three times before switching to the secondary provider (Mailgun).
