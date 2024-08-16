@@ -1,7 +1,7 @@
 # Email Notification Service
 
 This project implements an email notification service using Node.js, Express, and the Strategy Design Pattern. The service attempts to send an email using Nodemailer and switches to Mailgun after three consecutive failures.
-
+But very first time misunderstood the task as getting notification to email for password reset, sending otp etc.But writing my thoughts on paper about understanding, assumptions as well as gaps in understanding after reading task.It helped me to organise my thoughts and checked alignment of assumptions with given task using LLM model and drawn conclusions.
 ## Features
 
 - **Primary Email Provider:** Nodemailer with Gmail.
@@ -30,7 +30,7 @@ cpu,ram etc... we have bought from Cloud services as rent.
 It allows for easily adding new email providers in the future without modifying existing code.Adding new features to existing code is nothing but extensibility.
 The logic for selecting and switching providers is decoupled from the actual email-sending logic, promoting maintainability.And we know maintainability is able to read code and fix bugs without
 spending much time.
-We can observe polymorphism from oops concept being used in this pattern clearly.
+We can observe polymorphism from oops concept being used in this pattern clearly.After all Learning about Low level design is part of plan in upcoming 2 years.
 ## primary email service provider as Nodemailer and secondary email service provider as Mailgun:
 Choosed Nodemailer as primary email service provider as we can send emails  to any gmail account we want without need to need for acknowledgement to send mail from recipients like Mailgun is needed.
 The primary email service provider (Nodemailer) will fail three times before switching to the secondary provider (Mailgun).
